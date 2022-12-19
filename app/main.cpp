@@ -5,4 +5,13 @@
 
 int main()
 {
+	while (true) {
+
+		try {
+
+		}
+		catch (...) {
+
+		}
+	}
 }
