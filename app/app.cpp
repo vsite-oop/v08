@@ -2,27 +2,74 @@
 
 namespace vsite::oop::v8
 {
-	int vsite::oop::v8::input_num(std::istream& is) throw (BaseExcp) {
+	int input_num(std::istream& is) {
+		
+		int n;
+		is >> n;
+		if (!is)
+			throw not_number();
+
+		return n;
 
 	}
-	char vsite::oop::v8::input_op(std::istream& is) throw (BaseExcp) {
+	char input_op(std::istream& is) {
+		char op;
+		is >> op;
+		if (op != '+' &&
+			op != '-' &&
+			op != '*' &&
+			op != '/')
+		{
+			throw not_operator();
+		}
 
+			return op;
 	}
-	double vsite::oop::v8::calc(const int first, const char op, const int second) throw (BaseExcp) {
+	double calc(const int first, const char op, const int second) {
 
+		if (second == 0)
+			throw divide_zero();
+		else {
+			switch (op)
+			{
+			case '+':
+				return double(first + second);
+				break;
+			case '-':
+				return double(first - second);
+				break;
+			case '/':
+				return double(first / second);
+				break;
+			case '*':
+				return double(first * second);
+			default:
+				break;
+			}
+		}
 	}
 
 
-	class vsite::oop::v8::BaseExcp {
+	class BaseExcp {
 	public:
 		virtual std::string error() {};
 	};
-	class vsite::oop::v8::not_number : public vsite::oop::v8::BaseExcp {
+	class not_number : public BaseExcp {
 	public:
 		std::string error() override {
+			return ("not a number");
 		}
 	};
-	class vsite::oop::v8::not_operator : public vsite::oop::v8::BaseExcp {};
-	class vsite::oop::v8::divide_zero : public vsite::oop::v8::BaseExcp {};
-}
+	class not_operator : public BaseExcp {
+	public:
+		std::string error() override {
+			return ("invalid operation");
+		}
+	};
+	class divide_zero : public BaseExcp {
+	public:
+		std::string error() override {
+			return ("divide by zero");
+		}
+	};
 }
