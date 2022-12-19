@@ -3,19 +3,19 @@
 namespace vsite::oop::v8
 {
 
-	void not_number::show_error() const
+	std::string not_number::show_error() const
 	{
-		std::cout << "not a number exception";
+		return "not a number exception";
 	}
 
-	void not_operator::show_error() const
+	std::string not_operator::show_error() const
 	{
-		std::cout << "not an operator exception";
+		return"not an operator exception";
 	}
 
-	void divide_zero::show_error() const
+	std::string divide_zero::show_error() const
 	{
-		std::cout << "division by zero exception";
+		return "division by zero exception";
 	}
 
 	int input_num(std::istream& input_stream)
