@@ -75,8 +75,11 @@ namespace all_tests
 		TEST_METHOD(test_calc)
 		{
 			Assert::AreEqual(14., calc(10, '+', 4));
+			Assert::AreEqual(10., calc(10, '+', 0));
 			Assert::AreEqual(40., calc(10, '*', 4));
+			Assert::AreEqual(0., calc(10, '*', 0));
 			Assert::AreEqual(6., calc(10, '-', 4));
+			Assert::AreEqual(10., calc(10, '-', 0));
 			Assert::AreEqual(2.5, calc(10, '/', 4));
 			Assert::ExpectException<divide_zero>([]() {
 				calc(8, '/', 0);

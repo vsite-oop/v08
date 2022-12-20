@@ -46,9 +46,6 @@ namespace vsite::oop::v8
 
 	double calc(int l_operand, char oper, int r_operand)
 	{
-		if (r_operand == 0)
-			throw divide_zero();
-
 		switch (oper)
 		{
 		case '+':
@@ -61,6 +58,9 @@ namespace vsite::oop::v8
 			return l_operand * r_operand;
 
 		case '/':
+			if (!r_operand)
+				throw divide_zero();
+
 			return double(l_operand) / r_operand;
 		}
 	}
