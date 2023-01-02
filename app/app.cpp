@@ -4,11 +4,11 @@ namespace vsite::oop::v8
 {
 	int input_num(std::stringstream& ss) {
         int number;
-        if (ss >> number) {  // Returns true if sucessful.
+        if (ss >> number) {  // Returns true if successful.
             return number;
         }
         else {
-            throw not_number("not a number");
+            throw not_number();
         }
     }
 
@@ -18,13 +18,11 @@ namespace vsite::oop::v8
             return op;
         }
         else {
-            throw not_operator("invalid operation");
+            throw not_operator();
         }
     }
 
     double calc(int a, char op, int b) {
-        //a -= '0';
-        //b -= '0';
         switch (op) {
         case '+':
             return a + b;
@@ -37,7 +35,7 @@ namespace vsite::oop::v8
             break;
         case '/':
             if (b == 0) {
-                throw divide_zero("divide by zero");
+                throw divide_zero();
             }
             else {
                 return double(a) / double(b);

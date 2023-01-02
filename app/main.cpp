@@ -2,8 +2,6 @@
 
 #include "iostream"  // cout, cin
 #include "format" // format
-#include "sstream"
-#include "string"
 
 // read and evaluate expression inside endless loop 
 // break after first exception (use one catch clause), show error description
@@ -41,15 +39,12 @@ int main()
 			input_op(ss_op);
 			result = calc(a, op, b);
 			std::cout << std::format("{} {} {} = {}\n", a, op, b, result);
-		}catch (not_number nn) {
-			std::cout << nn.err << std::endl;
+		}catch (MathErr& x) {
+			x.showError();
 			continue;
-		}catch (not_operator no) {
-			std::cout << no.err << std::endl;
+		}catch (...) {
+			std::cout << "nepoznata iznimka\n" << std::endl;
 			continue;
-		}catch (divide_zero dz) {
-			std::cout << dz.err << std::endl;
-			continue;
-		};
+		}
 	}
 }

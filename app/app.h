@@ -1,26 +1,35 @@
 #pragma once
 
 #include <sstream>  // stringstream
+#include <iostream>  // cout
 
 namespace vsite::oop::v8 
 {
 	/*===Exceptions===*/
-	class not_number {
+	class MathErr {
 	public:
-		std::string err;
-		not_number(const char* s) : err(s) {};
+		virtual void showError() = 0;
 	};
 
-	class not_operator {
+	class not_number : public MathErr {
 	public:
-		std::string err;
-		not_operator(const char* s) : err(s) {};
+		void showError() override {
+			std::cout << "not a number\n";
+		}
 	};
 
-	class divide_zero {
+	class not_operator : public MathErr {
 	public:
-		std::string err;
-		divide_zero(const char* s) : err(s) {};
+		void showError() override {
+			std::cout << "invalid operation\n";
+		}
+	};
+
+	class divide_zero : public MathErr {
+	public:
+		void showError() override {
+			std::cout << "divide by zero\n";
+		}
 	};
 	
 	/*===Functions===*/
