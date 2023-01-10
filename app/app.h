@@ -30,7 +30,7 @@ namespace vsite::oop::v8
 
   int input_num(std::istream& ss);
   char input_op(std::istream& ss);
-  double calc(int a,char op,int c);
+  double calc(int a,char op,int b);
 
 
 }
