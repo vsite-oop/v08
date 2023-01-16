@@ -20,7 +20,7 @@ int main()
     }
     catch(const exception& Ex){
 
-      std::cout<<Ex.error();
+    std::cout<<Ex.error();
 
     }
 }
