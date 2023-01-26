@@ -22,13 +22,14 @@ namespace vsite::oop::v8
 		{
 			throw not_operator();
 		}
-
 			return op;
 	}
+
 	double calc(const int first, const char op, const int second) {
 
-		if (second == 0)
+		if (second == 0) {
 			throw divide_zero();
+		}
 		else {
 			switch (op)
 			{
@@ -61,5 +62,4 @@ namespace vsite::oop::v8
 	std::string divide_zero::error() {
 		return ("divide by zero");
 	}
-
 }
