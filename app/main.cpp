@@ -25,26 +25,18 @@ using namespace vsite::oop::v8;  // I added this.
 
 int main()
 {
-	while (true){
-		std::cout << "Unesite aritmeticki izraz (cijeli broj, operator, cijeli broj):\n";
-		std::string a, b; char op; double result;
-		std::cin >> a >> op >> b;
-		std::stringstream ss_a, ss_b, ss_op;
-		ss_a << a;
-		ss_b << b;
-		ss_op << op;
-		try {
-			int a = input_num(ss_a);  // std::string to int
-			int b = input_num(ss_b);  // std::string to int
-			input_op(ss_op);
-			result = calc(a, op, b);
+	try {
+		while (true) {
+			std::cout << "Unesite aritmeticki izraz (cijeli broj, operator, cijeli broj):\n";
+			int a = input_num(std::cin);
+			char op = input_op(std::cin);
+			int b = input_num(std::cin);
+			double result = calc(a, op, b);
 			std::cout << std::format("{} {} {} = {}\n", a, op, b, result);
-		}catch (MathErr& x) {
-			x.showError();
-			continue;
-		}catch (...) {
-			std::cout << "nepoznata iznimka\n" << std::endl;
-			continue;
 		}
+	}catch (MathErr& x) {
+		x.showError();
+	}catch (...) {
+		std::cout << "nepoznata iznimka\n" << std::endl;
 	}
 }

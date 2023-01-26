@@ -33,9 +33,9 @@ namespace vsite::oop::v8
 	};
 	
 	/*===Functions===*/
-	int input_num(std::stringstream&);
+	int input_num(std::istream&);
 
-	char input_op(std::stringstream&);
+	char input_op(std::istream&);
 
 	double calc(int, char, int);
 }

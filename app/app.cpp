@@ -2,9 +2,9 @@
 
 namespace vsite::oop::v8
 {
-	int input_num(std::stringstream& ss) {
+	int input_num(std::istream& is) {
         int number;
-        if (ss >> number) {  // Returns true if successful.
+        if (is >> number) {  // Returns true if successful.
             return number;
         }
         else {
@@ -12,9 +12,9 @@ namespace vsite::oop::v8
         }
     }
 
-    char input_op(std::stringstream& ss) {
+    char input_op(std::istream& is) {
         char op;
-        if ((ss >> op) && (strchr("+-*/", op)) != NULL) {
+        if ((is >> op) && (strchr("+-*/", op)) != NULL) {
             return op;
         }
         else {
