@@ -1,4 +1,5 @@
 #include "app.h"
+#include <iostream>
 
 namespace vsite::oop::v8
 {
@@ -10,7 +11,6 @@ namespace vsite::oop::v8
 			throw not_number();
 
 		return n;
-
 	}
 	char input_op(std::istream& is) {
 		char op;
@@ -33,16 +33,16 @@ namespace vsite::oop::v8
 			switch (op)
 			{
 			case '+':
-				return double(first + second);
+				return int (first + second);
 				break;
 			case '-':
-				return double(first - second);
+				return int (first - second);
 				break;
 			case '/':
-				return double(first / second);
+				return static_cast<double>(first) / second;
 				break;
 			case '*':
-				return double(first * second);
+				return int (first * second);
 			default:
 				break;
 			}
@@ -50,26 +50,16 @@ namespace vsite::oop::v8
 	}
 
 
-	class BaseExcp {
-	public:
-		virtual std::string error() {};
-	};
-	class not_number : public BaseExcp {
-	public:
-		std::string error() override {
-			return ("not a number");
-		}
-	};
-	class not_operator : public BaseExcp {
-	public:
-		std::string error() override {
-			return ("invalid operation");
-		}
-	};
-	class divide_zero : public BaseExcp {
-	public:
-		std::string error() override {
-			return ("divide by zero");
-		}
-	};
+	std::string not_number::error() {
+		return ("not a number");
+	}
+
+	std::string not_operator::error() {
+		return ("invalid operation");
+	}
+
+	std::string divide_zero::error() {
+		return ("divide by zero");
+	}
+
 }
