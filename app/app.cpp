@@ -27,7 +27,7 @@ namespace vsite::oop::v8
 
 	double calc(const int first, const char op, const int second) {
 
-		if (second == 0) {
+		if (op == '/' && second == 0  ) {
 			throw divide_zero();
 		}
 		else {
@@ -35,13 +35,10 @@ namespace vsite::oop::v8
 			{
 			case '+':
 				return int (first + second);
-				break;
 			case '-':
 				return int (first - second);
-				break;
 			case '/':
 				return static_cast<double>(first) / second;
-				break;
 			case '*':
 				return int (first * second);
 			default:
