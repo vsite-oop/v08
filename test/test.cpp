@@ -71,7 +71,7 @@ namespace all_tests
 				input_op(ss);
 			});
 		}
-
+		
 		TEST_METHOD(test_calc)
 		{
 			Assert::AreEqual(14., calc(10, '+', 4));
