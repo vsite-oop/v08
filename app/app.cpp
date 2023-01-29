@@ -32,7 +32,7 @@ namespace vsite::oop::v8
         throw not_operator();
     }
 
-    double calc(const double& num_a, const char& op, const double& num_b) {
+    double calc(const int& num_a, const char& op, const int& num_b) {
         switch (op) {
         case '+':
             return num_a + num_b;
@@ -42,7 +42,7 @@ namespace vsite::oop::v8
             return num_a * num_b;
         case '/':
             if (num_b == 0) throw divide_zero();
-            return num_a / num_b;
+            return num_a / static_cast<double>(num_b);
         }
     }
 }

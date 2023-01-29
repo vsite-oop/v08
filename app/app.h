@@ -28,6 +28,6 @@ namespace vsite::oop::v8
     
     char input_op(std::istream& ss);
 
-    double calc(const double& num_a, const char& op, const double& num_b);
+    double calc(const int& num_a, const char& op, const int& num_b);
 
 }
