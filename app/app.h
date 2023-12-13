@@ -12,9 +12,11 @@ namespace vsite::oop::v8
 		std::string error() const override;
 	};
 	class not_operator : public exception {
+	public:
 		std::string error() const override;
 	};
 	class divide_zero : public exception {
+	public:
 		std::string error() const override;
 	};
 
