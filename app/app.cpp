@@ -17,15 +17,8 @@ namespace vsite::oop::v8
 	{
 		char  n;
 		is >> n;
-		char niz[] = { '+','-','/','*' };
-		if (n == '+')
-			return '+';
-		else if (n == '-')
-			return '-';
-		else if (n == '/')
-			return '/';
-		else if (n == '*')
-			return '*';
+		if (n == '+' || n == '-' || n == '/' || n == '*')
+			return n;		
 		else
 			throw not_operator();
 	}
@@ -42,7 +35,7 @@ namespace vsite::oop::v8
 			case '/': {
 				if (operand2 == 0)
 					throw divide_zero();
-				return (double)operand1 / operand2;
+				return static_cast<double>(operand1) / operand2;
 			}
 		}
 	}
