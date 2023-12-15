@@ -15,7 +15,7 @@ int main()
 			auto l = input_num(std::cin);
 
 			double r = calc(f, op, l);
-			std::cout << r << std::endl;
+			std::cout << f << op << l << '=' << r << std::endl;
 		}
 		catch (const base_exception& e)
 		{

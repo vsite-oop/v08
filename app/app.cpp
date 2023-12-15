@@ -15,22 +15,16 @@ namespace vsite::oop::v8
     char input_op(std::istream& is)
     {
         int op = -1;
-        std::string in;
-        is >> in;
-            
-        if (in.length() > 1) {
-            for (char t : in)
-                if (t != in[0])
-                    throw not_operator();
-        }
+        char c;
+        is >> c;
         
         const std::string operators = "/*-+";
         
-        op = operators.find(in[0]);
-        if (in == "" || op == -1)
+        op = operators.find(c);
+        if (op == -1)
             throw not_operator();
 
-        return in[0];
+        return c;
     }
 
     double calc(int fNum, char op, int lNum)
