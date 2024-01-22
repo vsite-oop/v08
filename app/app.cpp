@@ -33,6 +33,7 @@ namespace vsite::oop::v8
 		case '/':
 			if (d == 0) {
 				throw divide_zero();
+				break;
 			}
 			return static_cast<double>(p) / d;
 		default:
